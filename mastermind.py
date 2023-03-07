@@ -1,3 +1,5 @@
+# This is my attempt for the original mastermind tutorial by techwithtim
+
 import random
 import sys
 
