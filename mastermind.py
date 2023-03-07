@@ -6,12 +6,14 @@ MAX_TRIES = 10
 COLORS = ['R', 'G', 'B', 'Y', 'V', 'O', 'I']
 
 def generate_code(colors):
+    """Generates and returns a four character color code"""
     code = []
     [code.append(random.choice(colors)) for i in range(4)]
     return code
 
 
 def take_guess(tr, colors):
+    """Prompts the user for guessing the code, checks whether it's valid, and then returns it."""
     while True:
         res = input(f'Please enter your colors separated by space, you have {MAX_TRIES - tr} tries left. [example:- R G B Y] ')
         guess = res.upper().split()
@@ -26,8 +28,9 @@ def take_guess(tr, colors):
     return guess
     
 
-#this is what coding is really about.. dumbhead.. 
 def check(original_code, guess_code):
+    """Checks if one or more colors in users guess match with the original code, and also whether the positions match, 
+    returns the number of correct and incorrect positions"""
     correct_pos = 0
     incorrect_pos = 0
     
@@ -71,12 +74,12 @@ def check(original_code, guess_code):
 
 
 def game():
+    """This function simulates the game by calling all the other functions in proper order and interacting with the user, it returns nothing."""
     while True:
         intro = input('Welcome to mastermind! In this game you must guess my code if you want to win! Do you want to continue? [press enter..] ')
         if intro == '':
             break
     code = generate_code(COLORS)
-    print(id(code))   
     for i in range(MAX_TRIES):
         guess = take_guess(i, COLORS)
         if guess:
